@@ -11,19 +11,15 @@ qemu-img create -f qcow2 web-add.qcow2 2G
 2、虚拟机添加一块硬盘
 
 ```rust
-virsh attach-disk web /opt/web-add.qcow2 vdb --subdriver qcow2　　　　　　    临时添加磁盘
-
-
-virsh attach-disk web /opt/web-add.qcow2 vdb --subdriver qcow2   --config   永久添加磁盘
-
-
-virsh detach-disk web vdb                                                   分离磁盘
+virsh attach-disk web /opt/web-add.qcow2 vdb --subdriver qcow2　　　　　　    #临时添加磁盘
+virsh attach-disk web /opt/web-add.qcow2 vdb --subdriver qcow2   --config   #永久添加磁盘
+virsh detach-disk web vdb                                                   #分离磁盘
 ```
 
 3、格式化硬盘，并挂载硬盘
 
 ```
-lsblk                                                　　　　　　　　　　　　　　查看添加硬盘是否添加成功
+lsblk                                                　　　　　　　　　　　　#查看添加硬盘是否添加成功
 ```
 
 **二、把数据盘扩容**
@@ -57,7 +53,7 @@ virsh attach-disk web /opt/web-add.qcow2 vdb --subdriver qcow2
 5、查看硬盘情况
 
 ```
-[root@localhost ~]# mount /dev/vdb /mnt                                             挂载硬盘
+[root@localhost ~]# mount /dev/vdb /mnt                                     #挂载硬盘
 [root@localhost ~]# df -h
 文件系统                 容量  已用  可用 已用% 挂载点
 /dev/mapper/centos-root  3.5G  981M  2.6G   28% /
@@ -67,7 +63,7 @@ tmpfs                    496M  6.7M  490M    2% /run
 tmpfs                    496M     0  496M    0% /sys/fs/cgroup
 /dev/vda1               1014M  130M  885M   13% /boot
 tmpfs                    100M     0  100M    0% /run/user/0
-/dev/vdb                 2.0G   33M  2.0G    2% /mnt                                 分区情况没有变，需要手动修改
+/dev/vdb                 2.0G   33M  2.0G    2% /mnt                       #分区情况没有变，需要手动修改
 [root@localhost ~]# fdisk -l
 
 磁盘 /dev/vda：5368 MB, 5368709120 字节，10485760 个扇区
@@ -91,7 +87,7 @@ Units = 扇区 of 1 * 512 = 512 bytes
 扇区大小(逻辑/物理)：512 字节 / 512 字节
 I/O 大小(最小/最佳)：512 字节 / 512 字节
 
-磁盘 /dev/vdb：4294 MB, 4294967296 字节，8388608 个扇区                                   这里分区变大了
+磁盘 /dev/vdb：4294 MB, 4294967296 字节，8388608 个扇区                      #这里分区变大了
 Units = 扇区 of 1 * 512 = 512 bytes
 扇区大小(逻辑/物理)：512 字节 / 512 字节
 I/O 大小(最小/最佳)：512 字节 / 512 字节
@@ -110,7 +106,7 @@ naming   =version 2              bsize=4096   ascii-ci=0 ftype=1
 log      =internal               bsize=4096   blocks=2560, version=2
          =                       sectsz=512   sunit=0 blks, lazy-count=1
 realtime =none                   extsz=4096   blocks=0, rtextents=0
-data blocks changed from 524288 to 1048576                                              这里变化了
+data blocks changed from 524288 to 1048576                               #这里变化了
 
 [root@localhost ~]# df -h
 文件系统 容量 已用 可用 已用% 挂载点
@@ -121,7 +117,7 @@ tmpfs 496M 6.7M 490M 2% /run
 tmpfs 496M 0 496M 0% /sys/fs/cgroup
 /dev/vda1 1014M 130M 885M 13% /boot
 tmpfs 100M 0 100M 0% /run/user/0
-/dev/vdb 4.0G 33M 4.0G 1% /mnt                                                           已经变成4G了
+/dev/vdb 4.0G 33M 4.0G 1% /mnt                                            #已经变成4G了
 ```
 
 **三、系统盘扩容**
@@ -140,7 +136,7 @@ tmpfs 100M 0 100M 0% /run/user/0
 [root@centoszhu opt]# qemu-img info web.qcow2 
 image: web.qcow2
 file format: qcow2
-virtual size: 5.0G (5368709120 bytes)                                                   系统盘只有5个G
+virtual size: 5.0G (5368709120 bytes)                                                   #系统盘只有5个G
 disk size: 1.3G
 cluster_size: 65536
 Format specific information:

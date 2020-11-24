@@ -20,7 +20,6 @@
         "theme-default",
         "-highlight", "prism", "prism-themes",
         "lightbox",
-        "page-treeview",
         "emphasize",
         "expandable-chapters"
     ],
@@ -35,7 +34,7 @@
             "url": "https://github.com/liugb1029/liunx-book"
         },
         "editlink": {
-            "base": "https://github.com/liugb1029/linux-book/blob/master",
+            "base": "https://github.com/liugb1029/linux-book/blob/main",
             "label": "Edit This Page"
         },
         "page-treeview": {
