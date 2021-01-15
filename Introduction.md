@@ -16,6 +16,9 @@
 * **套路篇**，在理解了基础，亲身体验了模拟案例之后，我会帮你梳理出排查问题的整体思路，也就是检查性能问题的一般步骤，这样，以后你遇到问题，就可以按照这样的路子来。
 * **答疑篇**，我相信在学习完每一个模块之后，你都会有很多的问题，在答疑篇里，我会拿出提问频次较高的问题给你系统解答。
 
+![Linux性能工具图](./linux-performance-optimizing/static/Linux.png)
+![Linux性能优化图谱](./linux-performance-optimizing/static/Linux-performance-optimizing.png)
+
 ### 第四部分 云计算
 
 主要包括热门技术openstack、Docker等原理和知识点记录
